@@ -1,0 +1,512 @@
+@keyframes fade-animation {
+    0%   { opacity: 0; }		
+    100% { opacity: 1; }
+}
+@keyframes fade-in {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+}
+@keyframes rotate {
+    0% { transform: rotate(0); }
+    100% { transform: rotate(360deg); }
+}
+@keyframes margin-down {
+    0% { margin-top: 34px; }
+    100% { margin-top: 42px; }
+}
+@keyframes down-fade {
+    0% {
+        bottom: 20px;
+        opacity: 1;
+    }
+    100% {
+        bottom: 10px;
+        opacity: 0;
+    }
+}
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+/* Убирает обводку в т.ч. с полей формы, когда мы на них кликаем */ 
+*:focus {
+    outline: none;
+}
+
+body {
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #262350;
+}
+
+.main-bg-color {
+    background-color: #262350;
+}
+
+.second-color {
+    color: white;
+}
+
+.third-color {
+    color: #ffc913
+}
+
+.wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+h1 {
+    font-size: 44px;
+    animation: fade-in 2s;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+h2.slogan {
+    text-align: center;
+    padding: 15px 0;
+}
+
+/** HEADER **/
+.header {
+    display: flex;
+    padding: 14px;
+    align-items: center;
+    border-bottom: 3px solid #fff;
+    position: fixed;
+    top: 0;
+    width: 1200px;
+    box-sizing: border-box;
+    z-index: 10;
+}
+.header .image {
+    background-image: url('../images/logo.png');
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    animation: fade-animation 5s infinite alternate;
+}
+.header .image:hover {
+    animation-play-state: paused;
+}
+.header .menu {
+    padding-left: 15px;
+}
+.header .menu a {
+    font-size: 24px;
+    font-weight: 600;
+    text-decoration: none;
+    color: white;
+    margin: 0 10px;
+    position: relative;
+}
+.header .menu a:before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    height: 3px;
+    background-color: #fff;
+    width: 0;
+    transition: .5s all;
+}
+.header .menu a:hover:before {
+    width: 100%;
+}
+/** /HEADER **/
+
+/** MAIN IMAGE **/
+.main-image {
+    height: 750px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 81px;
+    position: relative;
+}
+.main-image .slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.main-image .slider-dark-bg  {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,.5);
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+.main-image .slider div {
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    transition: 1s all;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.main-image .slider div.active {
+    opacity: 1;
+}
+.main-image .slider-navigation div {
+    position: absolute;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: url(../images/up-chevron-round-white.svg) center center / cover;
+    transition: .5s all;
+    cursor: pointer;
+    top: 50%;
+    z-index: 2;
+}
+.main-image .slider-navigation .left {
+    transform: rotate(-90deg);
+    left: 20px;
+}
+.main-image .slider-navigation .right {
+    transform: rotate(90deg);
+    right: 20px;
+}
+.main-image .container {
+    text-align: center;
+}
+.main-image .caption {
+    z-index: 2;
+}
+.main-image .button {
+    margin-top: 30px;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 28px;
+    position: relative;
+    cursor: pointer;
+}
+.main-image .button:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -5px;
+    width: 5px;
+    height: 100%;
+    background-color: #ffc913;
+    transition: .5s all;
+}
+.main-image .button:hover:before {
+    left: 100%;
+    transform: rotate(180deg);
+}
+.main-image .social-icons {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    z-index: 2;
+}
+.main-image .social-icons img {
+    width: 40px;
+    border: 1px solid #262350;
+}
+.main-image .to-scroll {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 15px;
+    height: 30px;
+    border: 3px solid #fff;
+    border-radius: 12px;
+    z-index: 2;
+}
+.main-image .to-scroll:before {
+    content: '';
+    position: absolute;
+    bottom: 20px;
+    width: 3px;
+    height: 8px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 2px;
+    animation: down-fade 1s linear infinite;
+}
+.main-image .to-scroll:after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transform: rotate(-45deg);
+    margin-top: 34px;
+    margin-left: 4px;
+    animation: margin-down .5s linear infinite;
+}
+
+/** /MAIN IMAGE **/
+
+/** ABOUT BLOCK **/
+.about-text {
+    padding: 55px;
+    border: 4px solid #262350;
+    border-bottom: 2px solid #262350;
+}
+.about-text p {
+    font-size: 18px;
+    font-weight: 300;
+    padding-bottom: 15px;
+    line-height: 26px;
+}
+/** /ABOUT BLOCK **/
+
+/** SERVICES **/
+.services {
+    display: flex;
+    flex-wrap: wrap;
+    border-left: 2px solid #262350;
+    border-right: 2px solid #262350;
+    background-color: #262350;
+}
+.services > div {
+    width: 33.3333%;
+    min-height: 300px;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-position: center 8px;
+    background-size: 150px auto;
+    background-color: white;
+    padding-top: 166px;
+    border: 3px solid #262350;
+    text-align: center;
+}
+.services > div .short-line {
+    width: 60px;
+    height: 3px;
+    background-color: #ffc913;
+    margin: 14px auto;
+}
+.services > div p {
+    width: 70%;
+    margin: 0 auto;
+    padding-bottom: 10px;
+    display: none;
+}
+.services > .russia {
+    background-image: url('../images/moscow.png');
+}
+.services > .europe {
+    background-image: url('../images/big-ben.png');
+}
+.services > .africa {
+    background-image: url('../images/pyramids.png');
+}
+.services > .north-america {
+    background-image: url('../images/north-america.png');
+}
+.services > .south-america {
+    background-image: url('../images/south-america.png');
+}
+.services > .australia {
+    background-image: url('../images/kangaroo.png');
+}
+.services h3 {
+    text-transform: uppercase;
+}
+/** /SERVICES **/
+
+/** QUESTION BOX **/
+.question-box {
+    height: 300px;
+    border: 6px solid #262350;
+    border-top-width: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.question-box > div {
+    text-align: center;
+}
+.question-box h2 {
+    font-weight: 400;
+}
+.question-box .button2 {
+    color:white;
+    font-size: 30px;
+    display: inline-block;
+    margin-top: 15px;
+    border: solid 3px #ffc913;
+    padding: 10px 150px;
+    cursor: pointer;
+}
+.modal-backdrop {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-color: rgba(38, 35, 80, .7);
+    z-index: 10;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.modal-backdrop .modal {
+    width: 500px;
+    padding: 40px;
+    box-sizing: border-box;
+    min-height: 300px;
+    background-color: white;
+    text-align: left;
+    border: 3px solid #ffc913;
+    position: relative;
+}
+.modal-backdrop .modal h4 {
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+/*.modal-backdrop .modal form input[type='text']*/ 
+.modal-backdrop .modal form input,
+.modal-backdrop .modal form textarea {
+    padding: 10px;
+    border: 2px solid #ffc913;
+    width: 100%;
+    box-sizing: border-box;
+    color: #aaa;
+    margin-top: 10px;
+    resize: none;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+.modal-backdrop .modal form input[type="submit"] {
+    background-color: #262350;
+    color: #fff;
+    font-size: 1rem;
+}
+.modal-backdrop .modal form .error-text {
+    font-size: 12px;
+    color: #ff0000;
+    display: none;
+}
+.modal-backdrop .modal .logo {
+    width: 50px;
+    height: 50px;
+    background: url(../images/logo.png) no-repeat center center / cover;
+    position: absolute;
+    top: -25px;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+}
+.modal-backdrop .modal .cross {
+    width: 25px;
+    height: 25px;
+    background-color: #ffc913;
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    font-size: 1.6rem;
+    line-height: 1rem;
+    padding: 2px;
+    padding-top: 4px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.modal-backdrop .modal .cross:hover{
+    transform: rotate(180deg);
+    transition: all 3s;
+}
+/** /QUESTION BOX **/
+
+.faq {
+    border: 5px solid #262350;
+    border-top: none;
+    padding: 25px;
+}
+.faq h4 {
+    font-size: 1.4rem;
+}
+.faq > div .question {
+    background-color: #262350;
+    color: white;
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.faq > div .answer {
+    padding: 10px;
+    border: 2px solid #262350;
+    display: none;
+    /*height: 0;*/
+    overflow: hidden;
+}
+
+/** FOOTER **/
+.footer {
+    padding: 55px;
+    display: flex;
+}
+.footer h2, .footer p {
+    padding-bottom: 15px;
+}
+.footer h2 {
+    font-weight: 400;
+}
+.footer > div {
+    width: 33.3333%;
+}
+.footer .center-block {
+    background-image: url(../images/logo.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 150px auto;
+}
+.footer .center-block.animate {
+    animation: rotate 2s infinite linear;
+}
+.footer .right-block {
+    text-align:right;
+}
+/** /FOOTER **/
+
+.arrow-up {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+}
+.arrow-up a, .arrow-down a {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background: url(../images/up-chevron.svg) no-repeat center center / 30px auto;
+    border: 5px solid white;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: .5s all;
+}
+.arrow-up a:hover {
+    border: 5px solid black;
+}
+.arrow-down {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+}
+.arrow-down a {
+    transform: rotate(180deg);
+}
+.arrow-down a:hover {
+    border: 5px solid black;
+    border-radius: 5px;
+}
